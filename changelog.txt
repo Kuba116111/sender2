@@ -1,0 +1,13 @@
+Dla wersji 0.1.12.22
+Szukasz wersji? Wejdź w ustawienia i zjedź na sam dół, ewentualnie skopiuj to ⭢ sender2/settings.php
+⬇⬇⬇ Każda zmiana w jakimkolwiek pliku musi być zapisana tutaj ⬇⬇⬇
+
+Typy zmian
+Dodane -- dla nowych funkcjonalności.
+Zmienione -- dla zmian w istniejących funkcjonalnościach.
+Zdezaprobowane -- dla funkcjonalności wkrótce do usunięcia.
+Usunięte -- dla teraz usuwanych funkcjonalności.
+Naprawione -- dla jakichkolwiek poprawek błędów.
+Bezpieczeństwo -- w przypadku luk w zabezpieczeniach.
+
+PS. Może coś sensownego kiedyś tu będzie
