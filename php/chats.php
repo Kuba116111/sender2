@@ -61,7 +61,7 @@
                                 }
                                 $result = $row2['text'];
                                 (strlen($result) > 28) ? $msg =  substr($result, 0, 28) . '...' : $msg = $result;
-                                if($to_user !== $row2['to_user']){
+                                if($to_user === $row2['to_user']){
                                     if($outgoing_id === $row2['to_user']){
                                         $you = $user.': ';
                                     }else{
@@ -84,13 +84,11 @@
                                                 </div>
                                             </div></a>';
                             }else{
-                                $output .="Brak wiadomości";
+                                $output ="Brak wiadomości";
                             }
                         }else{
-                            $output .= "Błąd!";
+                            $output = "Błąd!";
                         }
-                    }else{
-                        $output .= "Brak wiadomości";
                     }
                 }
                 $i++;

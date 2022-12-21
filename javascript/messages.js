@@ -37,6 +37,8 @@ sendBtn.onclick = ()=>{
   }
 }
 
+let data_old = '';
+
 setInterval(() =>{
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "php/messages.php", true);
@@ -44,7 +46,11 @@ setInterval(() =>{
     if(xhr.readyState === XMLHttpRequest.DONE){
       if(xhr.status === 200){
         let data = xhr.response;
-        allmessages.innerHTML = data;
+        if(data !== data_old)
+        {
+          data_old = data;
+          allmessages.innerHTML = data;
+        }
         // dateTime.innerHTML = DateAndTime();
           // allchats.innerHTML = "ok";
           // scrollToBottom();
@@ -53,9 +59,7 @@ setInterval(() =>{
   }
   let DataChatUserId = new FormData(chatUserId);
   xhr.send(DataChatUserId);
-  }, 100);
-
-
+  }, 10);
 
 function scrollToBottom(){
   setTimeout(() => {

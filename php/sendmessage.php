@@ -35,8 +35,9 @@
                 if($i!==0) {
                     if($one_chat === $chat_id)
                     {
-                        $date = date("Y:m:d H:i:s");
-                        $sql = "INSERT INTO messages_$chat_id VALUES (NULL, '{$id}', '{$user_id}', '{$message}', '{$date}')";
+                        $date = date("d-m-Y");
+                        $time = date("H:i:s");
+                        $sql = "INSERT INTO messages_$chat_id VALUES (NULL, '{$id}', '{$user_id}', '{$message}', '{$date}', '{$time}')";
                         $query = mysqli_query($conn, $sql);
                     }
                 }

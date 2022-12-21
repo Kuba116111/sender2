@@ -24,35 +24,6 @@ nav form {
     margin: 1%;
 }
 
-.chat-right > div {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.chat-right > div > div{
-    min-width: 20%;
-    justify-content: right;
-    background-color: rgb(56, 93, 240);
-    /* padding: 1%; */
-    border-radius: 50px 50px 0px 50px;
-    padding-left: 10%;
-    min-width: 100px;
-}
-
-.chat > div > div{
-    background-color: cadetblue;
-    /* padding: 1%;  */
-    /* padding-right: 4%; */
-    max-width: 100%;
-    border-radius: 50px 100px 100px 0;
-    flex-wrap: wrap;
-    min-width: 20%;
-}
-
-/* .chat p, .chat-right p {
-    word-wrap: break-word;
-} */
-
 .messages {
     /* margin-top: 4%; */
     /* position: relative; */
@@ -65,13 +36,66 @@ nav form {
 
 :is(.messages)::-webkit-scrollbar{
     width: 0px;
-  }
+}
+
+/* 
+.chat-right > div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.chat-right > div > div{
+    min-width: 20%;
+    justify-content: right;
+    background-color: rgb(56, 93, 240);
+    /* padding: 1%; 
+    border-radius: 50px 50px 0px 50px;
+    padding-left: 10%;
+    min-width: 100px;
+} */
+
+.chat-right > div{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.chat-right > div > div{
+    /* min-width: 20%; */
+    justify-content: end;
+    background-color: rgb(56, 93, 240);
+    /* padding: 1%; */
+    border-radius: 50px 50px 0px 50px;
+    padding-left: 1%;
+    /* min-width: 100px; */
+    max-width: 100%;
+    /* min-width: 20%; */
+    width: auto;
+    text-align: right;
+}
+
+.chat-right .time {
+    text-align: end;
+}
+
+.chat > div > div{
+    background-color: cadetblue;
+    /* padding: 1%;  */
+    /* padding-right: 4%; */
+    max-width: 100%;
+    border-radius: 50px 100px 100px 0;
+    flex-wrap: wrap;
+    min-width: 10%;
+}
+
+/* .chat p, .chat-right p {
+    word-wrap: break-word;
+} */
 
 .message-text {
     padding: 4%;
     padding-bottom: 0;
     word-wrap: break-word;
-    width: 100%;
+    min-width: 100px;
 }
 /* 
 .bottom-message {

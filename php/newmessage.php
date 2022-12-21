@@ -49,7 +49,7 @@
                     exit();
                 }else{
                     $rand = rand(time(), 100000000);
-                    $sql_create = "CREATE TABLE `sender2`.`messages_$rand` (`id` INT NOT NULL AUTO_INCREMENT , `from_user` INT NOT NULL , `to_user` INT NOT NULL , `text` LONGTEXT NOT NULL , `date_time` DATETIME NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
+                    $sql_create = "CREATE TABLE `sender2`.`messages_$rand` (`id` INT NOT NULL AUTO_INCREMENT , `from_user` INT NOT NULL , `to_user` INT NOT NULL , `text` LONGTEXT NOT NULL , `date` TEXT NULL , `time` TIME NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
                     $query_create = mysqli_query($conn, $sql_create);
                     
                     $newchats = $newchats.','.$rand;                    

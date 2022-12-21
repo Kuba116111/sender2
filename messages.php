@@ -39,7 +39,7 @@
 <body onload="scrollToBottom()">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
         <div class="container-fluid">
-            <a class="navbar-brand" href="">Sender2</a>
+            <a class="navbar-brand" href="chat.php">Sender2</a>
             <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

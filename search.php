@@ -49,7 +49,8 @@
                         // $result .= '<a href="profile.php?id='.$row['id'].'">Odwiedź profil</a>';
                         $result .= '</div>';
                         $result .= '<span class="d-block">'.$row['fname'].' '.$row['lname'].'</span>';
-                        $result .= '<span class="d-block">'.$row['status'].'</span>';
+                        $result .= '<span class="d-block">Data dołączenia: '.$row['date'].'</span>';
+                        // $result .= '<span class="d-block">'.$row['status'].'</span>';
                     $result .= '</div>';
                 $result .= '</div></a>';
                 
@@ -76,7 +77,8 @@
                         // $result .= '<a href="profile.php?id='.$row['id'].'">Odwiedź profil</a>';
                         $result .= '</div>';
                         $result .= '<span class="d-block">'.$row['fname'].' '.$row['lname'].'</span>';
-                        $result .= '<span class="d-block">'.$row['status'].'</span>';
+                        $result .= '<span class="d-block">Data dołączenia: '.$row['date'].'</span>';
+                        // $result .= '<span class="d-block">'.$row['status'].'</span>';
                     $result .= '</div>';
                 $result .= '</div></a>';
             }
@@ -155,7 +157,7 @@
             </div>
         </div> -->
 
-        <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <div class="my-3 p-3 bg-body rounded shadow-sm div-allchats">
             <h6 class="border-bottom pb-2 mb-0">Wyniki wyszukiwania:</h6>
 
             <?php

@@ -40,16 +40,20 @@
                 {
                     $sql = "SELECT * FROM messages_$chat_id ORDER BY id";
                     $query = mysqli_query($conn, $sql);
-        
+                    $date = 1;
                     while($row = mysqli_fetch_assoc($query))
                     {
+                        if($row['date'] !== $date) {
+                            $date = $row['date'];
+                            $output .= '<hr><p>'.$row['date'].'</p>';
+                        }
                         if ($row['from_user'] === $id) {
                             $output .= '<div class="row row-cols-1 row-cols-lg-1 mb-1 chat-right">
-                                            <div class="col">
-                                                <div class="d-inline-flex align-items-center justify-content-center">
+                                            <div class="row d-inline-flex justify-content-right">
+                                                <div class="d-inline-flex align-items-center justify-content-right">
                                                     <p class="message-text">'.$row['text'].'</p>
-                                                </div>
-                                                <p class="text-muted">'.$row['date_time'].'<?p>
+                                                </div>  
+                                                <p class="text-muted time">'.$row['time'].'<?p>
                                             </div>
                                         </div>';
                         }elseif ($row['to_user'] === $id){
@@ -59,7 +63,7 @@
                                                     <p class="message-text">'.$row['text'].'</p>
                                                     <img class="photo-profile" src="images/'.$img.'" alt="'.$user.'">
                                                 </div>
-                                                <p class="text-muted">'.$row['date_time'].'<?p>
+                                            <p class="text-muted">'.$row['time'].'<?p>
                                             </div>
                                         </div>';       
                         }
