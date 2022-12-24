@@ -59,7 +59,7 @@ setInterval(() =>{
   }
   let DataChatUserId = new FormData(chatUserId);
   xhr.send(DataChatUserId);
-  }, 10);
+  }, 100);
 
 function scrollToBottom(){
   setTimeout(() => {

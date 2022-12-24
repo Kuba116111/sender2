@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION['logged']) && $_SESSION['logged'] != true)
+    if(!isset($_COOKIE['logged']) && $_COOKIE['logged'] != true)
     {
-        header("Location: index.php");
+        header("Location: ../index.php");
         exit();
     }
 
@@ -24,7 +24,7 @@
             $chats = $row['chats'];
             // echo $chats;
         }
-        if ($chats !== '') {
+        if ($chats !== ',') {
             $chats2 = explode(',',$chats);
             $i=0;
             foreach($chats2 as $one_chat)
@@ -94,7 +94,7 @@
                 $i++;
             }
         }else{
-            $output .= "Coś tu pusto";
+            $output = "Coś tu pusto";
         }
     }
     
@@ -140,4 +140,6 @@
         // }
     }
     echo $output;
+    
+    $conn->close();
 ?>

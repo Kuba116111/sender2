@@ -1,7 +1,12 @@
 <?php
     session_start();
 
-    if(isset($_SESSION['logged']) && $_SESSION['logged'] = true)
+    // if(isset($_SESSION['logged']) && $_SESSION['logged'] = true)
+    // {
+    //     header("Location: chat.php");
+    //     exit();
+    // }
+    if(isset($_COOKIE['logged']) && $_COOKIE['logged'] = true)
     {
         header("Location: chat.php");
         exit();
@@ -47,6 +52,7 @@
                     if(isset($_SESSION['index_error'])){
                     echo $_SESSION['index_error'];
                     }
+                    // echo $_COOKIE['logged'];
                 ?>
             </p>
           <button class="w-100 btn btn-lg btn-primary" type="submit">Zaloguj</button>

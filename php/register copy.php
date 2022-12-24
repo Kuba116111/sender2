@@ -81,4 +81,6 @@
         header("Location: ../register.php");
         exit();
     }
+
+    $conn->close();
 ?>

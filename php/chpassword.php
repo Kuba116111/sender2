@@ -1,11 +1,8 @@
 <?php
     session_start();
 
-    if(isset($_SESSION['logged']) && $_SESSION['logged'] = true)
+    if(!isset($_COOKIE['logged']) && $_COOKIE['logged'] != true)
     {
-        // header("Location: ../settings.php");
-        // exit();
-    } else {
         header("Location: ../index.php");
         exit();
     }
@@ -17,19 +14,19 @@
     $id = $_SESSION['id'];
 
     $password = mysqli_real_escape_string($conn, $_POST['password']);
-    $chpassword1 = mysqli_real_escape_string($conn, $_POST['chpassword']);
-    $chpassword2 = mysqli_real_escape_string($conn, $_POST['chpassword1']);
+    $chpassword1 = mysqli_real_escape_string($conn, $_POST['chpassword1']);
+    $chpassword2 = mysqli_real_escape_string($conn, $_POST['chpassword2']);
 
-    // print_r($password.$chpassword.$chpassword1);
+    // print_r($password.$chpassword1.$chpassword2);
 
-    if(!empty($password) && !empty($chpassword) && !empty($chpassword1)){
-        if($chpassword === $chpassword1)
+    if(!empty($password) || !empty($chpassword1) || !empty($chpassword2)){
+        if($chpassword1 === $chpassword2)
         {
             $select_password = mysqli_query($conn, "SELECT pass FROM users WHERE id = '{$id}'");
             $row = $select_password->fetch_assoc();
 
             if (password_verify($password, $row['pass']) == true) {
-                $encrypt_pass = password_hash($chpassword, PASSWORD_DEFAULT);
+                $encrypt_pass = password_hash($chpassword1, PASSWORD_DEFAULT);
                 $insert_query = mysqli_query($conn, "UPDATE users SET pass='{$encrypt_pass}' WHERE id = $id");
                 if($insert_query){
                     // $_SESSION['chpassword_error'] = '<p>Hasło zostało zmienione<p>';
@@ -56,4 +53,6 @@
         header("Location: ../settings.php#chpassword");
         exit();
     }
+
+    $conn->close();
 ?>

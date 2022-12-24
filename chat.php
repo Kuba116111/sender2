@@ -1,7 +1,12 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION['logged']) && $_SESSION['logged'] != true)
+    // if(!isset($_SESSION['logged']) && $_SESSION['logged'] != true)
+    // {
+    //     header("Location: index.php");
+    //     exit();
+    // }
+    if(!isset($_COOKIE['logged']) && $_COOKIE['logged'] != true)
     {
         header("Location: index.php");
         exit();

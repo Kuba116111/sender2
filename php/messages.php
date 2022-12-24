@@ -1,10 +1,10 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION['logged']) && $_SESSION['logged'] != true)
+    if(!isset($_COOKIE['logged']) && $_COOKIE['logged'] != true)
     {
-        // header("Location: index.php");
-        // exit();
+        header("Location: ../index.php");
+        exit();
     }
 
     $id = $_SESSION['id'];
@@ -75,4 +75,6 @@
         }
     }
     echo $output;
+
+    $conn->close();
 ?>
