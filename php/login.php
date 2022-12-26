@@ -57,7 +57,7 @@
                             $result = mysqli_fetch_assoc($select_sql2);
                             $_SESSION['id'] = $result['id'];
 
-                            // $_SESSION['logged'] = true; 
+                            $_SESSION['logged'] = true; 
                             // echo "success";
 
                             setcookie('logged', true, 0, "/");

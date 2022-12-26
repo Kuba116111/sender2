@@ -5,9 +5,6 @@
     {
         header("Location: ../chat.php");
         exit();
-    } else {
-        header("Location: ../index.php");
-        exit();
     }
 
     include_once "connect.php";
@@ -62,8 +59,8 @@
                                             $status = "Aktywny(a) teraz";
                                             $encrypt_pass = password_hash($password, PASSWORD_DEFAULT);
                                             $date = date("d.m.Y");
-                                            $insert_query = mysqli_query($conn, "INSERT INTO users (id, user, fname, lname, email, pass, img, status, date)
-                                            VALUES ('{$ran_id}', '{$login}', NULL, NULL, '{$email}', '{$encrypt_pass}', '{$new_img_name}', NULL, '{$date}')");
+                                            $insert_query = mysqli_query($conn, "INSERT INTO users (id, user, fname, lname, email, pass, img, status, date, theme, chats)
+                                            VALUES ('{$ran_id}', '{$login}', '{$fname}', NULL, '{$email}', '{$encrypt_pass}', '{$new_img_name}', NULL, '{$date}', 'white', '')");
                                             if($insert_query){
                                                 $select_sql2 = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
                                                 if(mysqli_num_rows($select_sql2) > 0){
