@@ -50,10 +50,10 @@
         //     weryfikacja($email, $temat, 'verify', 'register.php');
         // }
     }
-
-
-
-
+    
+    
+    
+    
     // $_SESSION['reg_error'] = "tu";
     if(!empty($email) && !empty($password) && !empty($login) && !empty($fname)){
         if($password === $password1)
@@ -88,10 +88,10 @@
                                     if(move_uploaded_file($tmp_name,"../images/".$new_img_name)){
                                         if(isset($_POST['accept'])){
                                             $status = "Aktywny(a) teraz";
-                                            $encrypt_pass = password_hash($password, PASSWORD_DEFAULT);
+                                            $encrypt_pass = password_hash($password, PASSWORD_DEFAULT); //<---TUUUUUUUUUU
                                             $date = date("d.m.Y");
-                                            $insert_query = mysqli_query($conn, "INSERT INTO users (id, user, fname, lname, email, pass, img, status, date, theme, chats, verified)
-                                            VALUES ('{$ran_id}', '{$login}', '{$fname}', NULL, '{$email}', '{$encrypt_pass}', '{$new_img_name}', NULL, '{$date}', 'white', NULL, 'no')");
+                                            $insert_query = mysqli_query($conn, "INSERT INTO users (id, user, fname, lname, email, pass, img, status, date, theme, chats)
+                                            VALUES ('{$ran_id}', '{$login}', '{$fname}', NULL, '{$email}', '{$encrypt_pass}', '{$new_img_name}', NULL, '{$date}', 'white', '')");
                                             if($insert_query){
                                                 $select_sql2 = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
                                                 if(mysqli_num_rows($select_sql2) > 0){
@@ -111,15 +111,18 @@
 
                                                     // verify();
 
+                                                    $temat = 'Weryfikacja adesu e-mail';
+
                                                     weryfikacja($email, $temat, 'verify', 'registercomplete.php');
                                                     
                                                 }else{
-                                                    $_SESSION['reg_error'] = "This email address not Exist!";
+                                                    $_SESSION['reg_error'] = "Coś poszło nie tak, spróbuj ponownie później";
                                                     header("Location: ../register.php");
                                                     exit();
                                                 }
+                                                    // $_SESSION['reg_error'] = "123";
                                             }else{
-                                                $_SESSION['reg_error'] = "Coś poszlo nie tak, spróbuj ponownie później";
+                                                $_SESSION['reg_error'] = "Coś poszło nie tak, spróbuj ponownie później";
                                                 header("Location: ../register.php");
                                                 exit();
                                             }
@@ -140,7 +143,6 @@
                                 exit();
                             }
                         }
-                        
                     }
                 }
             }else{
@@ -161,7 +163,7 @@
 
     
 
-
+    
 
     $conn->close();
 ?>

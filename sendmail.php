@@ -1,17 +1,8 @@
 <?php
-
-$to = "pkuba04@wp.pl";
-$subject = "Temat wiadomości";
-$message = "Treść wiadomości";
-$headers = "From: gnito320@gmail.com" . "\r\n" .
-           "CC: pkuba04@wp.pl";
-
-if (mail($to, $subject, $message, $headers)) {
+if (mail("gnito320@gmail.com", "Temat wiadomosci", "Tresc wiadomosci", "From: sender2@vp.pl")) {
   echo "Wiadomość została wysłana";
 } else {
   echo "Wystąpił błąd podczas wysyłania wiadomości";
 }
-
-// print_r(phpinfo());
 
 ?>

@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    // if(isset($_SESSION['logged']) && $_SESSION['logged'] = true)
+    // if(isset($_SESSION['logged']) && $_SESSION['logged'] == true)
     // {
     //     header("Location: ../chat.php");
     //     exit();
@@ -56,6 +56,7 @@
                             // if(mysqli_num_rows($select_sql2) > 0){
                             $result = mysqli_fetch_assoc($select_sql2);
                             $_SESSION['id'] = $result['id'];
+
                             if($row['verified'] == 'yes')
                             {
 
@@ -100,7 +101,11 @@
                     exit();
                 }
             }
-        }        
+
+
+            // $db_conn->close();
+        }
+        
     } else {
         $_SESSION['index_error'] = 'Wypełnij wszystkie pola';
         
