@@ -56,8 +56,10 @@
                             // if(mysqli_num_rows($select_sql2) > 0){
                             $result = mysqli_fetch_assoc($select_sql2);
                             $_SESSION['id'] = $result['id'];
+                            if($row['verified'] == 'yes')
+                            {
 
-                            $_SESSION['logged'] = true; 
+                            // $_SESSION['logged'] = true; 
                             // echo "success";
 
                             setcookie('logged', true, 0, "/");
@@ -70,6 +72,11 @@
                             // echo $_SESSION['id'];
                             header("Location: ../chat.php");
                             exit();
+                            }else{
+                                require_once("verify.php");
+                                $temat='Próba logowania została zablokowana, zweryfikuj adres e-mail';
+                                weryfikacja($row['email'], $temat, 'verify', 'registercomplete.php');
+                            }
                             
                             // }else{
                             //     $_SESSION['reg_error'] = "This email address not Exist!";
@@ -93,11 +100,7 @@
                     exit();
                 }
             }
-
-
-            // $db_conn->close();
-        }
-        
+        }        
     } else {
         $_SESSION['index_error'] = 'Wypełnij wszystkie pola';
         

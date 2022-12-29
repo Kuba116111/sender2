@@ -1,11 +1,14 @@
 <?php
     session_start();
 
-    if(isset($_COOKIE['logged']) && $_COOKIE['logged'] = true)
-    {
-        header("Location: ../chat.php");
-        exit();
-    }
+    // if(isset($_COOKIE['logged']) && $_COOKIE['logged'] = true)
+    // {
+    //     header("Location: ../chat.php");
+    //     exit();
+    // } else {
+    //     header("Location: ../index.php");
+    //     exit();
+    // }
 
     include_once "connect.php";
 
@@ -24,6 +27,34 @@
     $_SESSION['frfname'] = $fname;
     $_SESSION['fremail'] = $email;
 
+
+    require_once "verify.php";
+
+    function verify() {
+        // $temat = 'Weryfikacja adesu e-mail';
+        // if(isset($_SESSION['verify']) && $_SESSION['verify'] == true)
+        // {
+        //     unset($_SESSION['verify']);
+
+        //     $_SESSION['logged'] = true;
+        //     // echo "success";
+            
+        //     setcookie('logged', true, 0, "/");
+            
+        //     unset($_SESSION['frlogin']);
+        //     unset($_SESSION['fremail']);
+        //     unset($_SESSION['reg_error']);
+        //     header("Location: ../chat.php");
+        //     exit();
+        // }else{
+        //     weryfikacja($email, $temat, 'verify', 'register.php');
+        // }
+    }
+
+
+
+
+    // $_SESSION['reg_error'] = "tu";
     if(!empty($email) && !empty($password) && !empty($login) && !empty($fname)){
         if($password === $password1)
         {
@@ -59,22 +90,29 @@
                                             $status = "Aktywny(a) teraz";
                                             $encrypt_pass = password_hash($password, PASSWORD_DEFAULT);
                                             $date = date("d.m.Y");
-                                            $insert_query = mysqli_query($conn, "INSERT INTO users (id, user, fname, lname, email, pass, img, status, date, theme, chats)
-                                            VALUES ('{$ran_id}', '{$login}', '{$fname}', NULL, '{$email}', '{$encrypt_pass}', '{$new_img_name}', NULL, '{$date}', 'white', '')");
+                                            $insert_query = mysqli_query($conn, "INSERT INTO users (id, user, fname, lname, email, pass, img, status, date, theme, chats, verified)
+                                            VALUES ('{$ran_id}', '{$login}', '{$fname}', NULL, '{$email}', '{$encrypt_pass}', '{$new_img_name}', NULL, '{$date}', 'white', NULL, 'no')");
                                             if($insert_query){
                                                 $select_sql2 = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
                                                 if(mysqli_num_rows($select_sql2) > 0){
                                                     $result = mysqli_fetch_assoc($select_sql2);
                                                     
                                                     $_SESSION['id'] = $result['id'];
-                                                    $_SESSION['logged'] = true;
-                                                    // echo "success";
+                                                    // $_SESSION['logged'] = true;
+                                                    // // echo "success";
+
+                                                    // setcookie('logged', true, 0, "/");
                     
-                                                    unset($_SESSION['frlogin']);
-                                                    unset($_SESSION['fremail']);
+                                                    // unset($_SESSION['frlogin']);
+                                                    // unset($_SESSION['fremail']);
                                                     // unset($_SESSION['reg_error']);
-                                                    header("Location: ../chat.php");
-                                                    exit();
+                                                    // header("Location: ../chat.php");
+                                                    // exit();
+
+                                                    // verify();
+
+                                                    weryfikacja($email, $temat, 'verify', 'registercomplete.php');
+                                                    
                                                 }else{
                                                     $_SESSION['reg_error'] = "This email address not Exist!";
                                                     header("Location: ../register.php");
@@ -120,6 +158,10 @@
         header("Location: ../register.php");
         exit();
     }
+
+    
+
+
 
     $conn->close();
 ?>
