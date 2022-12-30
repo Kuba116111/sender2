@@ -57,6 +57,7 @@
             </p>
           <button class="w-100 btn btn-lg btn-primary" type="submit">Zaloguj</button>
         </form>
+        <p><a href="resetpassword">Nie pamiętam hasła</a></p>
         <br>
         <p>Nie masz konta? <a href="register.php"><button type="button" class="btn btn-outline-secondary btn-lg px-2">Kliknij tutaj aby je utworzyć</button></a></p>
         <p class="mt-5 mb-3 text-muted">&copy; 2022</p>

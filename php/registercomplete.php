@@ -8,7 +8,7 @@
 
     if(isset($_SESSION['verify']) && $_SESSION['verify'] == true)
     {
-        echo 1;
+        // echo 1;
         unset($_SESSION['verify']);
 
         $id = $_SESSION['id'];

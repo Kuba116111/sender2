@@ -88,10 +88,10 @@
                                     if(move_uploaded_file($tmp_name,"../images/".$new_img_name)){
                                         if(isset($_POST['accept'])){
                                             $status = "Aktywny(a) teraz";
-                                            $encrypt_pass = password_hash($password, PASSWORD_DEFAULT); //<---TUUUUUUUUUU
+                                            $encrypt_pass = password_hash($password, PASSWORD_DEFAULT);
                                             $date = date("d.m.Y");
-                                            $insert_query = mysqli_query($conn, "INSERT INTO users (id, user, fname, lname, email, pass, img, status, date, theme, chats)
-                                            VALUES ('{$ran_id}', '{$login}', '{$fname}', NULL, '{$email}', '{$encrypt_pass}', '{$new_img_name}', NULL, '{$date}', 'white', '')");
+                                            $insert_query = mysqli_query($conn, "INSERT INTO users (id, user, fname, lname, email, pass, img, status, date, theme, chats, verified)
+                                            VALUES ('{$ran_id}', '{$login}', '{$fname}', NULL, '{$email}', '{$encrypt_pass}', '{$new_img_name}', NULL, '{$date}', 'white', ',', 'no')");
                                             if($insert_query){
                                                 $select_sql2 = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
                                                 if(mysqli_num_rows($select_sql2) > 0){

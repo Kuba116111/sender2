@@ -104,6 +104,10 @@
                         <input type="text" class="form-control" id="username" placeholder="<?php echo $login ?>" disabled>
                     </div>
                 </div>
+                <div class="col-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $email ?>" disabled>
+                </div>
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="firstName" class="form-label">Imię</label>
@@ -115,10 +119,6 @@
                         <input type="text" class="form-control" id="lastName" name="lname" value="<?php echo $lname ?>">
                     </div>
                     
-                    <div class="col-12">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="<?php echo $email ?>" required>
-                    </div>
                     
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Zatwierdź zmiany</button>
                     <div id="div-chdata">
@@ -128,9 +128,10 @@
                             }
                         ?>
                     </div>
-                </form>
-                <hr class="my-4">
-                <form id="chavatar" class="needs-validation" method="post" action="php/chavatar.php" enctype="multipart/form-data">
+                </div>
+            </form>
+            <hr class="my-4">
+            <form id="chavatar" class="needs-validation" method="post" action="php/chavatar.php" enctype="multipart/form-data">
                 <h5 class="mb-3">Zmień awatar</h5>
                 <div class="mb-4">
                     <label for="floatingFile">Wybierz nowy awatar</label>
@@ -145,7 +146,7 @@
                     ?>
                 </div>
             </form>
-        </div>
+        
         <hr class="my-4">
         <div>
             <form id="chtheme" class="needs-validation" method="post" action="php/chtheme.php">

@@ -52,27 +52,28 @@
                         // $status = "Active now";
                         $update_query = mysqli_query($conn, "UPDATE users SET status = NULL WHERE user='{$login}'");
                         if($update_query){
-                            $select_sql2 = mysqli_query($conn, "SELECT id FROM users WHERE user='{$login}'");
+                            $select_sql2 = mysqli_query($conn, "SELECT id, email FROM users WHERE user='{$login}'");
                             // if(mysqli_num_rows($select_sql2) > 0){
                             $result = mysqli_fetch_assoc($select_sql2);
                             $_SESSION['id'] = $result['id'];
+                            $_SESSION['email'] = $result['email'];
 
                             if($row['verified'] == 'yes')
                             {
 
-                            // $_SESSION['logged'] = true; 
-                            // echo "success";
+                                // $_SESSION['logged'] = true; 
+                                // echo "success";
 
-                            setcookie('logged', true, 0, "/");
+                                setcookie('logged', true, 0, "/");
 
-                            unset($_SESSION['frlogin']);
-                            unset($_SESSION['index_error']);
-                            // unset($_SESSION['fremail']);
-                            // unset($_SESSION['reg_error']);
+                                unset($_SESSION['frlogin']);
+                                unset($_SESSION['index_error']);
+                                // unset($_SESSION['fremail']);
+                                // unset($_SESSION['reg_error']);
 
-                            // echo $_SESSION['id'];
-                            header("Location: ../chat.php");
-                            exit();
+                                // echo $_SESSION['id'];
+                                header("Location: ../chat.php");
+                                exit();
                             }else{
                                 require_once("verify.php");
                                 $temat='Próba logowania została zablokowana, zweryfikuj adres e-mail';

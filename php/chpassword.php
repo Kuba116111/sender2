@@ -12,6 +12,7 @@
     $_SESSION['chpassword_error'] = '';
 
     $id = $_SESSION['id'];
+    $email = $_SESSION['email'];
 
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $chpassword1 = mysqli_real_escape_string($conn, $_POST['chpassword1']);
@@ -29,6 +30,9 @@
                 $encrypt_pass = password_hash($chpassword1, PASSWORD_DEFAULT);
                 $insert_query = mysqli_query($conn, "UPDATE users SET pass='{$encrypt_pass}' WHERE id = $id");
                 if($insert_query){
+                    require_once "verify.php";
+                    $temat = 'Twoje hasło zostało zmienione';
+                    weryfikacja($email, $temat, 'info', 'chpassword.php');
                     // $_SESSION['chpassword_error'] = '<p>Hasło zostało zmienione<p>';
                     unset($_SESSION['chpassword_error']);
                     header("Location: ../settings.php#chpassword");

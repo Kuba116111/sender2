@@ -28,7 +28,7 @@
             $_SESSION['return'] = $return;
             $rand=rand(1000, 9999);
             $_SESSION['code'] = $rand;
-            $tresc = 'To twój kod weryfikacyjny: '.$rand;
+            $tresc = "W celu weryfikacji przepisz kod weryfikacyjny: ".$rand;
             // $tresc = 'W celu weryfikacji kliknij tutaj:http://localhost/strony/sender2/verify?verify='.$rand;
             mail($email, $temat, $tresc, "From: sender2@vp.pl");
             header("Location: ../verify.php");
@@ -55,6 +55,9 @@
                 echo $verifycode.$_SESSION['code'];
             }
             // echo $_SESSION['return'].$return;
+        }elseif($status=='info'){
+            $tresc = "Zmieniono dane twojego konta, jesli to nie ty je zmieniles jak najszybciej zmien haslo";
+            mail($email, $temat, $tresc, "From: sender2@vp.pl");
         }
     }
 
