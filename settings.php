@@ -165,7 +165,7 @@
             </form>
         </div>
         <br>
-        <p>Wersja <i>0.1.12.22</i></p>
+        <p>Wersja <i>0.2.23.1</i></p>
     </main>
 
     <script src="https://getbootstrap.com/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

@@ -21,7 +21,7 @@
     $name = "SELECT id, user, fname, lname, img, date FROM users WHERE id=$page_id";
 
     $query = mysqli_query($conn, $name);
-
+    
     while($row = mysqli_fetch_assoc($query)){
         $id_user = $row['id'];
         $login = $row['user'];
@@ -29,6 +29,21 @@
         $lname = $row['lname'];
         $img = $row['img'];
         $date = $row['date'];
+    }
+    
+    $sql_select_friend = "SELECT * FROM friends WHERE (friend1_id = '{$id}' AND friend2_id = '{$page_id}') OR (friend1_id = '{$page_id}' AND friend2_id = '{$id}')";
+    $query_select_friend = mysqli_query($conn, $sql_select_friend);
+
+    if(mysqli_num_rows($query_select_friend) > 0){
+        while($row2 = mysqli_fetch_assoc($query_select_friend)){
+            $friend1_id = $row2['friend1_id'];
+            $friend2_id = $row2['friend2_id'];
+            $verify = $row2['verify'];
+        }
+    }else{
+        $friend1_id = '';
+        $friend2_id = '';
+        $verify = '';
     }
 ?>
 
@@ -57,7 +72,13 @@
                         <a class="nav-link" href="chat.php">Czaty</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="profile.php?id=<?php echo $id ?>">Mój profil</a>
+                        <?php
+                            if($page_id === $id){
+                                echo '<a class="nav-link active" aria-current="page" href="profile.php?id='.$id.'">Mój profil</a>';
+                            }else{
+                                echo '<a class="nav-link" href="profile.php?id='.$id.'">Mój profil</a>';
+                            }
+                        ?>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Switch account</a>
@@ -81,8 +102,8 @@
                     $my_profile .= '<div class="profile"><img class="bd-placeholder-img rounded-circle photo-profile" width="140" height="140" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">';
                     $my_profile .= '<h2 class="fw-normal">'.$login."<br>".$fname." ".$lname."</h2>";
                     $my_profile .= "<p>Data dołączenia: $date</p>";
-                    $my_profile .= '<p><button class="btn btn-secondary btn-show-link">Udostępnij link do swojego konta &raquo;</button></p></div>';
-                    $my_profile .= '<div class="col div-link">
+                    $my_profile .= '<p><button class="btn btn-secondary btn-show-link" onclick="ShowLink()">Udostępnij link do swojego konta &raquo;</button></p></div>';
+                    $my_profile .= '<div class="col div-link" style="display: none;">
                                         <div class="card mb-4 rounded-3 shadow-sm">
                                             <div class="card-body">
                                                 <p class="card-title">https://localhost/strony/sender2/profile.php?id='.$id.'</p>
@@ -99,16 +120,80 @@
                 echo $my_profile;
             }else{
                 $my_profile = '<div class="col-lg-20 col-md-20 mx-auto">';
-                    $my_profile .= '<img class="bd-placeholder-img rounded-circle photo-profile" width="140" height="140" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">';
-                    $my_profile .= '<h2 class="fw-normal">'.$login."<br>".$fname." ".$lname."</h2>";
-                    $my_profile .= "<p>Data dołączenia: $date</p>";
+                $my_profile .= '<img class="bd-placeholder-img rounded-circle photo-profile" width="140" height="140" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">';
+                $my_profile .= '<h2 class="fw-normal">'.$login."<br>".$fname." ".$lname."</h2>";
+                $my_profile .= "<p>Data dołączenia: $date</p>";
+
+                // $friends = explode(',',$friends);
+                // foreach($friends as $one_friend)
+                // {
+                if((($friend1_id === $id && $friend2_id === $page_id) || ($friend1_id === $page_id && $friend2_id === $id)) && $verify==="yes")
+                {
+                    // $my_profile = '<div class="col-lg-20 col-md-20 mx-auto">';
+                    // $my_profile .= '<img class="bd-placeholder-img rounded-circle photo-profile" width="140" height="140" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">';
+                    // $my_profile .= '<h2 class="fw-normal">'.$login."<br>".$fname." ".$lname."</h2>";
+                    // $my_profile .= "<p>Data dołączenia: $date</p>";
+                    $my_profile .= '<p><form action="php/delfriend.php" method="POST" class="form-friend-id"><input hidden type="text" name="friend-id" value="'.$id_user.'"><button type="submit" class="btn btn-secondary w-100" id="btn-del-friend" onclick="delFriend()">Usuń z grona znajomych &raquo;</button></form></p>';
                     $my_profile .= '<p><a class="btn btn-secondary w-100" href="php/newmessage.php?id='.$id_user.'">Napisz coś &raquo;</a></p>';
+                    $my_profile .= '</div>';
+                    echo $my_profile;
+                    exit();         
+                }
+                // }
+                // $friends_to_verify2 = explode(',',$friends_to_verify);
+                // $i=0;
+                // foreach($friends_to_verify2 as $one_friend_to_verify)
+                // {
+                if(($friend1_id === $id && $friend2_id === $page_id) && $verify==="no") {
+                    // $my_profile = '<div class="col-lg-20 col-md-20 mx-auto">';
+                    // $my_profile .= '<img class="bd-placeholder-img rounded-circle photo-profile" width="140" height="140" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">';
+                    // $my_profile .= '<h2 class="fw-normal">'.$login."<br>".$fname." ".$lname."</h2>";
+                    // $my_profile .= "<p>Data dołączenia: $date</p>";
+                    // $my_profile .= '<p><form action="php/acceptfriend.php" method="POST" class="form-friend-id"><input type="text" name="friend-id" value="'.$id_user.'"><button type="submit" class="btn btn-secondary w-100" id="btn-accept-friend" onclick="acceptFriend()">Zaakceptuj zaproszenie do grona znajomych &raquo;</button></form></p>';
+                    $my_profile .= '<p><form action="php/delfriend.php" method="POST" class="form-friend-id"><input hidden type="text" name="friend-id" value="'.$id_user.'"><button type="submit" class="btn btn-secondary w-100" id="btn-del-friend" onclick="delFriend()">Anuluj wysłanie zaproszenia do grona znajomych &raquo;</button></form></p>';
+                    // $my_profile .= '<p><a class="btn btn-secondary w-100" href="php/newmessage.php?id='.$id_user.'">Napisz coś &raquo;</a></p>'; 
+                    $my_profile .= '</div>';
+                    echo $my_profile;
+                    exit();
+                }
+                if(($friend1_id === $page_id && $friend2_id === $id) && $verify==="no") {
+                    // $my_profile = '<div class="col-lg-20 col-md-20 mx-auto">';
+                    // $my_profile .= '<img class="bd-placeholder-img rounded-circle photo-profile" width="140" height="140" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">';
+                    // $my_profile .= '<h2 class="fw-normal">'.$login."<br>".$fname." ".$lname."</h2>";
+                    // $my_profile .= "<p>Data dołączenia: $date</p>";
+                    $my_profile .= '<p><form action="php/acceptfriend.php" method="POST" class="form-friend-id"><input hidden type="text" name="friend-id" value="'.$id_user.'"><button type="submit" class="btn btn-secondary w-100" id="btn-accept-friend" onclick="acceptFriend()">Zaakceptuj zaproszenie do grona znajomych &raquo;</button></form></p>';
+                    // $my_profile .= '<p><a class="btn btn-secondary w-100" href="php/newmessage.php?id='.$id_user.'">Napisz coś &raquo;</a></p>'; 
+                    $my_profile .= '</div>';
+                    echo $my_profile;
+                    exit();
+                }
+                // }
+                
+                // $newfriends = $newfriends.','.$rand;                    
+                // $newfriends2 = $newfriends2.','.$rand;
+                
+                // print_r($newfriends.$newfriends2);
+                // $sql_update = "UPDATE `users` SET `friends`='{$newfriends}' WHERE `id` = '{$id}';";
+                // $sql_update2 = "UPDATE `users` SET `friends`='{$newfriends2}' WHERE `id` = '{$user_id}';";
+                // $query_update = mysqli_query($conn, $sql_update);
+                // $query_update2 = mysqli_query($conn, $sql_update2);
+                // header("Location: ../messages.php?chatid=$rand&userid=$user_id");
+                
+                // $my_profile = '<div class="col-lg-20 col-md-20 mx-auto">';
+                // $my_profile .= '<img class="bd-placeholder-img rounded-circle photo-profile" width="140" height="140" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">';
+                // $my_profile .= '<h2 class="fw-normal">'.$login."<br>".$fname." ".$lname."</h2>";
+                // $my_profile .= "<p>Data dołączenia: $date</p>";
+                $my_profile .= '<p><form action="php/addfriend.php" method="POST" class="form-friend-id"><input hidden type="text" name="friend-id" value="'.$id_user.'"><button type="submit" class="btn btn-secondary w-100" id="btn-add-friend" onclick="addFriend()">Dodaj do grona znajomych &raquo;</button><button type="submit" class="btn btn-secondary w-100" id="btn-del-friend" onclick="delFriend()" style="display: none;">Usuń z grona znajomych &raquo;</button></form></p>';
+                // $my_profile .= '<p><a class="btn btn-secondary w-100" href="php/newmessage.php?id='.$id_user.'">Napisz coś &raquo;</a></p>';
                 $my_profile .= '</div>';
                 echo $my_profile;
+
             }
-        ?>
+            $conn->close();
+            ?>
         
     </main>
+    <!-- <button class="btn btn-secondary w-100" id="btn-del-friend" name="btn-del-friend" value="'.$id_user.'">Usuń z grona znajomych znajomych &raquo;</button> -->
 
     <script src="https://getbootstrap.com/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="javascript/offcanvas.js"></script>

@@ -36,14 +36,18 @@
                     
                     if (mysqli_num_rows($query_search) > 0) {
                         $sql2 = "SELECT * FROM messages_$one_chat ORDER BY id DESC";
+                        $sql3 = "SELECT * FROM messages_$one_chat ORDER BY id DESC";
                         $query2 = mysqli_query($conn, $sql2);
                         $row2 = mysqli_fetch_assoc($query2);
+                        // print_r($row2);
                         if(mysqli_num_rows($query2) > 0){
-                            while ($row3 = mysqli_fetch_assoc($query2)) {
+                            // print_r($row2);
+                            $query3 = mysqli_query($conn, $sql3);
+                            while ($row3 = mysqli_fetch_assoc($query3)) {
                                 $from_user = $row3['from_user'];
                                 $to_user = $row3['to_user'];
                             }
-                            print_r($row3);
+                            // print_r($row2);
                             if ($from_user === $id) {
                                 $select_user = "SELECT * FROM users WHERE id = '{$to_user}'";
                                 $query_select_user = mysqli_query($conn, $select_user);

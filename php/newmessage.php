@@ -41,32 +41,30 @@
     $chats2 = explode(',',$chats2);
     foreach($chats as $one_chat)
     {
-        if($one_chat !== '')
-        {
+        // if($one_chat !== '')
+        // {
+            // print_r($one_chat);
             foreach($chats2 as $one_chat2)
             {
-                if($one_chat2 !== '')
-                {
-                    if($one_chat === $one_chat2)
+                // print_r($chats2);
+                // echo $one_chat2;
+                
+                    if(($one_chat === $one_chat2))
                     {
-                        header("Location: ../messages.php?chatid=$one_chat&userid=$user_id");
-                        exit();
-                    }else{
-                        $rand = rand(time(), 100000000);
-                        $sql_create = "CREATE TABLE `sender2`.`messages_$rand` (`id` INT NOT NULL AUTO_INCREMENT , `from_user` INT NOT NULL , `to_user` INT NOT NULL , `text` LONGTEXT NOT NULL , `date` TEXT NULL , `time` TIME NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
-                        $query_create = mysqli_query($conn, $sql_create);
-                        
-                        $newchats = $newchats.','.$rand;                    
-                        $newchats2 = $newchats2.','.$rand;
-                        
-                        // print_r($newchats.$newchats2);
-                        $sql_update = "UPDATE `users` SET `chats`='{$newchats}' WHERE `id` = '{$id}';";
-                        $sql_update2 = "UPDATE `users` SET `chats`='{$newchats2}' WHERE `id` = '{$user_id}';";
-                        $query_update = mysqli_query($conn, $sql_update);
-                        $query_update2 = mysqli_query($conn, $sql_update2);
-                        header("Location: ../messages.php?chatid=$rand&userid=$user_id");
-                        exit();
+                        if($one_chat2 !== '')
+                        {
+                            header("Location: ../messages.php?chatid=$one_chat&userid=$user_id");
+                            // echo '<br>';
+                            // print_r($one_chat2);
+                            exit();
+                        // }else{
+                            
+                        }
                     }
+                    // if(($one_chat === $one_chat2)&&($one_chat !== '' || $one_chat2 !== ''))
+                    // {
+                    // }else{
+                    // }
                 // if($one_chat === $one_chat2 && $one_chat !== '')
                 // {
                 //     header("Location: ../messages.php?chatid=$one_chat&userid=$user_id");
@@ -97,14 +95,48 @@
                 //     header("Location: ../messages.php?chatid=$rand&userid=$user_id");
                 //     exit();
                 // }
-                }
+                
             }
 
-        }
+        // }else{
+        //     $rand = rand(time(), 100000000);
+        //     $sql_create = "CREATE TABLE `sender2`.`messages_$rand` (`id` INT NOT NULL AUTO_INCREMENT , `from_user` INT NOT NULL , `to_user` INT NOT NULL , `text` LONGTEXT NOT NULL , `date` TEXT NULL , `time` TIME NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
+        //     $query_create = mysqli_query($conn, $sql_create);
+            
+        //     $newchats = $newchats.','.$rand;                    
+        //     $newchats2 = $newchats2.','.$rand;
+            
+        //     // print_r($newchats.$newchats2);
+        //     $sql_update = "UPDATE `users` SET `chats`='{$newchats}' WHERE `id` = '{$id}';";
+        //     $sql_update2 = "UPDATE `users` SET `chats`='{$newchats2}' WHERE `id` = '{$user_id}';";
+        //     // $query_update = mysqli_query($conn, $sql_update);
+        //     // $query_update2 = mysqli_query($conn, $sql_update2);
+        //     header("Location: ../messages.php?chatid=$rand&userid=$user_id");
+        //     exit();
+        // }
             
     }
+    // print_r($chats);
 
-    // echo $user;
+    $rand = rand(time(), 100000000);
+    $sql_create = "CREATE TABLE `sender2`.`messages_$rand` (`id` INT NOT NULL AUTO_INCREMENT , `from_user` INT NOT NULL , `to_user` INT NOT NULL , `text` LONGTEXT NOT NULL , `date` TEXT NULL , `time` TIME NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
+    $query_create = mysqli_query($conn, $sql_create);
+    
+    $newchats = $newchats.','.$rand;                    
+    $newchats2 = $newchats2.','.$rand;
+    
+    // print_r($newchats.$newchats2);
+    $sql_update = "UPDATE `users` SET `chats`='{$newchats}' WHERE `id` = '{$id}';";
+    $sql_update2 = "UPDATE `users` SET `chats`='{$newchats2}' WHERE `id` = '{$user_id}';";
+    $query_update = mysqli_query($conn, $sql_update);
+    $query_update2 = mysqli_query($conn, $sql_update2);
+    header("Location: ../messages.php?chatid=$rand&userid=$user_id");
+    
+    // print_r($one_chat);
+    // echo '<br>';
+    // print_r($one_chat2);
+    // exit();
+
 
     $conn->close();
 ?>

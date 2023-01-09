@@ -23,7 +23,7 @@ nav form {
     border: 1px solid black;
 }
 
-.div-allchats > a {
+.div-allchats > a, .div-allfriends > a {
     text-decoration: none;
 }
 
