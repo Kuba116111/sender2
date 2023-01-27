@@ -130,6 +130,9 @@ nav form {
     min-width: 100px;
 } */
 
+.date{
+    text-align: center;
+}
 .error {
     color: red;
 }

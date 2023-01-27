@@ -15,7 +15,16 @@
     require_once("php/connect.php");
     // require_once("php/paths.php");
 
-    $id = $_SESSION['id'];
+    if(isset($_SESSION['id'])){
+        $id = $_SESSION['id'];
+    }else{
+        unset($_SESSION['logged']);
+        // unset($_COOKIE['logged']);
+        setcookie('logged', "", time() -3600, "/");
+        
+        header("Location: index.php");
+        session_destroy();
+    }
     $name = "SELECT user, fname, lname, img FROM users WHERE id=$id";
 
     $query = mysqli_query($conn, $name);
@@ -81,8 +90,69 @@
                 <!-- <small>Aktywny(a) teraz</small> -->
             </div>
         </div>
+        
+        <button class="btn btn-outline-success newgroupchat" id="btn-newgroupchat" onclick="showDivNewGroupChat()">Utwórz nową grupę</button>
+        <form action="php/newgroupmessage.php" method="post" class="formnewgroupchat">
+            <div class="modal modal-tour position-static d-block py-5" tabindex="-1" role="dialog" id="modalTour">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content rounded-4 shadow">
+                        <h2 class="modal-header fw-bold mx-0">Kreator nowej grupy</h2>
+                        <div class="modal-body p-3">
+                            <ul class="d-grid list-unstyled">
+                                <!-- <li class="d-flex">
+                                    <div class="w-100">
+                                        <h5>Nadaj nazwę grupy</h5>
+                                        <div>
+                                            <input type="text" class="form-control" id="groupName" name="group-name" placeholder="Nazwa grupy">
+                                        </div>
+                                    </div>
+                                </li> -->
+                                <li class="d-flex gap-4 mb-2">
+                                    <div>
+                                        <h5 class="mb-2">Wybrane osoby: </h5>
+                                        <div class="selected-users">
+                                            <!-- <span class="checked-user">aadasdada</span>,<span class="checked-user">aadasdada</span>,<span class="checked-user">aadasdada</span> -->
+                                        </div>
+                                    </div>
+                                </li>
+                                <input type="text" name="members" id="members_id" value="" hidden>
+                                <li class="d-flex gap-4">
+                                    <div>
+                                    <h5 class="mb-0">Wyszukaj członków</h5>
+                                    Możesz wyszukać tylko osoby z grona znajomych
+                                    </div>
+                                </li>
+                                <li class="d-flex">
+                                    <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden w-100">
+                                        <form class="p-2 mb-2 bg-light border-bottom" id="formusertogroup">
+                                            <input type="search" id="search_user_to_group" class="form-control" placeholder="Wyszukaj użytkowników...">
+                                        </form>
+                                        <ul class="list-unstyled mb-0" id="list_users_to_group">
+                                            
+                                        </ul>
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="modal-footer flex-nowrap p-0">
+                            <input type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" value="Utwórz grupę">
+                            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal" onclick="hideDivNewGroupChat()">Anuluj</button>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- <a class="btn-outline-succes newgroupchat" href="php/newgroup.php"><button class="btn btn-outline-success btn-newgroupchat" type="submit">Utwórz nową grupę</button></a> -->
+        <div class="my-3 p-3 bg-body rounded shadow-sm allgroups">
+            <h6 class="border-bottom pb-2 mb-0">Grupy</h6>
+            <div class="div-allgroups">
+                
+            </div>
+        </div>
+
         <div class="my-3 p-3 bg-body rounded shadow-sm allchats">
-            <h6 class="border-bottom pb-2 mb-0">Rozmowy</h6>
+            <h6 class="border-bottom pb-2 mb-0">Czaty</h6>
             <div class="div-allchats">
                 
             </div>
@@ -111,8 +181,8 @@
 
     </main>
 
-    <script src="https://getbootstrap.com/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+    <!-- <script src="https://getbootstrap.com/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="javascript/offcanvas.js"></script>
     <script src="javascript/chats.js"></script>
 </body>

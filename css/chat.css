@@ -16,6 +16,26 @@ nav form {
     margin: 5px;
 }
 
+.newgroupchat{
+    float: right;
+}
+
+.formnewgroupchat{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* padding-top: 5%; */
+    background-color: rgba(61, 61, 61, 0.204);
+    display: none;  
+}
+
+#list_users_to_group{
+    min-height: 40vh;
+}
+
 .photo-profile {
     /* border-radius: 10%; */
     width: 50px;
@@ -23,7 +43,7 @@ nav form {
     border: 1px solid black;
 }
 
-.div-allchats > a, .div-allfriends > a {
+.div-allgroups > a, .div-allchats > a, .div-allfriends > a {
     text-decoration: none;
 }
 

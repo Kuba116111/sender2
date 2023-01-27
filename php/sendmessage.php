@@ -19,31 +19,20 @@
 
     $output = '';
 
-    $sql2 = "SELECT * FROM users WHERE id = '{$user_id}'";
-    $query2 = mysqli_query($conn, $sql2);
+    $sql1 = "SELECT * FROM chats WHERE (friend1_id = '{$id}' AND friend2_id = '{$user_id}') OR (friend1_id = '{$user_id}' OR friend2_id = '{$id}')";
+    $query1 = mysqli_query($conn, $sql1);
 
-    while($row1 = mysqli_fetch_assoc($query2))
-    {
-        $chats = $row1['chats'];
-    }
-
-    if ($chats !== '') {
-        $chats2 = explode(',',$chats);
-        $i=0;
-        foreach($chats2 as $one_chat)
-        {
-            if($i!==0) {
-                if($one_chat === $chat_id)
-                {
-                    $date = date("d-m-Y");
-                    $time = date("H:i:s");
-                    $sql = "INSERT INTO messages_$chat_id VALUES (NULL, '{$id}', '{$user_id}', '{$message}', '{$date}', '{$time}')";
-                    $query = mysqli_query($conn, $sql);
-                }
-            }
-            $i++;
-        }
-    }
+    // while($row1 = mysqli_fetch_assoc($query1))
+    // {
+    //     $chats = $row1['chats'];
+    // }
+    $date = date("d-m-Y");
+    $time = date("H:i:s");
+    $sql = "INSERT INTO messages_$chat_id VALUES (NULL, '{$id}', '{$user_id}', '{$message}', '{$date}', '{$time}')";
+    $query = mysqli_query($conn, $sql);
+    $actual_date = date('Y-m-d H:i:s');
+    $sql_update = "UPDATE `chats` SET date = '{$actual_date}' WHERE chat_id=$chat_id";
+    $query_update = mysqli_query($conn, $sql_update);
 
     // echo date("Y:m:d H:i:s");
     

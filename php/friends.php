@@ -163,7 +163,7 @@
                 }
             }
         }
-            $output .= "<hr>";
+            $output .= '<div class="pb-3 mb-0 small lh-sm border-bottom w-100"></div>';
     }
 
     $sql_select_friend = "SELECT * FROM friends WHERE (friend1_id = '{$id}' OR friend2_id = '{$id}') AND verify='yes'";
