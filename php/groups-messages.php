@@ -60,7 +60,7 @@
                                     <div class="col">
                                         <div class="d-inline-flex align-items-center justify-content-left">
                                             <p class="message-text">'.$row['text'].'</p>
-                                            <img class="photo-profile" src="images/'.$from_member['img'].'" alt="'.$from_member['user'].'">
+                                            <img class="photo-profile" src="images/users/'.$from_member['img'].'" alt="'.$from_member['user'].'">
                                         </div>
                                         <p class="user">'.$from_member['user'].'</p>
                                         <p class="text-muted">'.$row['time'].'<?p>

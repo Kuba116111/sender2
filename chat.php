@@ -81,7 +81,7 @@
     </nav>
     <main class="container">
         <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
-            <img class="me-3 rounded-circle photo-profile" src="images/<?php echo $img ?>" alt="" width="48" height="48">
+            <img class="me-3 rounded-circle photo-profile" src="images/users/<?php echo $img ?>" alt="" width="48" height="48">
             <div class="lh-1">
                 <h1 class="h6 mb-0 text-white lh-1"><?php
                     echo $login."<br>";

@@ -26,7 +26,7 @@
             $types = ["image/jpeg", "image/jpg", "image/png"];
             if(in_array($img_type, $types) === true){
                 $new_img_name = $id.$img_name;
-                if(move_uploaded_file($tmp_name,"../images/".$new_img_name)){
+                if(move_uploaded_file($tmp_name,"../images/users/".$new_img_name)){
                     $update_query = mysqli_query($conn, "UPDATE users SET img = '{$new_img_name}' WHERE id = $id");
                     if($update_query){
                         unset($_SESSION['chavatar_error']);

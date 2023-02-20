@@ -12,6 +12,12 @@
  
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/5.3/examples/sign-in/sign-in.css" rel="stylesheet">
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body class="text-center">   
     <main class="form-signin w-100 m-auto">

@@ -61,7 +61,7 @@
                                             <div class="col">
                                                 <div class="d-inline-flex align-items-center justify-content-start">
                                                     <p class="message-text">'.$row['text'].'</p>
-                                                    <img class="photo-profile" src="images/'.$img.'" alt="'.$user.'">
+                                                    <img class="photo-profile" src="images/users/'.$img.'" alt="'.$user.'">
                                                 </div>
                                             <p class="text-muted">'.$row['time'].'<?p>
                                             </div>

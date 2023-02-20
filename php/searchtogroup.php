@@ -43,7 +43,7 @@
             while($row = mysqli_fetch_assoc($query))
             {
                 // $result .= '<a href="profile.php?id='.$row['id'].'" class="allchats"><div class="d-flex text-muted pt-3 pb-3">';
-                //     $result .= '<img class="bd-placeholder-img rounded-circle m-3 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$row['img'].'">';
+                //     $result .= '<img class="bd-placeholder-img rounded-circle m-3 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$row['img'].'">';
                 //     $result .= '<div class="pb-3 mb-0 small lh-sm border-bottom w-100">';
                 //         $result .= '<div class="d-flex justify-content-between">';
                 //         $result .= '<strong class="text-gray-dark">@'.$row['user'].'</strong>';
@@ -56,7 +56,7 @@
                 // $result .= '</div></a>';
                 $result .= '<li>
                                 <div class="dropdown-item d-flex align-items-center gap-2 py-1 user_to_select">
-                                    <img class="bd-placeholder-img rounded-circle m-1 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$row['img'].'">
+                                    <img class="bd-placeholder-img rounded-circle m-1 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$row['img'].'">
                                     <div class="pb-0 mb-0 w-100">
                                         <div class="d-flex justify-content-between">
                                             <strong class="text-gray-dark">@'.$row['user'].'</strong>
@@ -85,7 +85,7 @@
     
     
                     // $result .= '<a href="profile.php?id='.$row['id'].'" class="allchats"><div class="d-flex text-muted pt-3 border-bottom">';
-                    //     $result .= '<img class="bd-placeholder-img rounded-circle m-3 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$row['img'].'">';
+                    //     $result .= '<img class="bd-placeholder-img rounded-circle m-3 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$row['img'].'">';
                     //     $result .= '<div class="pb-3 mb-0 w-100">';
                     //         $result .= '<div class="d-flex justify-content-between">';
                     //         $result .= '<strong class="text-gray-dark">@'.$row['user'].'</strong>';
@@ -98,7 +98,7 @@
                     // $result .= '</div></a>';
                     $result .= '<li>
                                     <div class="dropdown-item d-flex align-items-center gap-2 py-1 user_to_select">
-                                        <img class="bd-placeholder-img rounded-circle m-1 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$row['img'].'">
+                                        <img class="bd-placeholder-img rounded-circle m-1 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$row['img'].'">
                                         <div class="pb-0 mb-0 w-100">
                                             <div class="d-flex justify-content-between">
                                                 <strong class="text-gray-dark">@'.$row['user'].'</strong>

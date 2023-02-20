@@ -1,5 +1,5 @@
 <?php
-    // session_start();
+    session_start();
 
     $rand = '';
     // $return = '';
@@ -51,7 +51,7 @@
                 echo "Błąd";
                 // header("Location: ../verify");
                 header("Location: ../verify");
-                $_SESSION['verifyerror'] = '<p class="error">Błędny kod weryfikacyjny';
+                $_SESSION['verifyerror'] = '<p class="error">Błędny kod weryfikacyjny</p>';
                 echo $verifycode.$_SESSION['code'];
             }
             // echo $_SESSION['return'].$return;

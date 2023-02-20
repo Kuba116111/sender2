@@ -41,7 +41,7 @@
     //                     $lname = $row2['lname'];
     //                     $user = $row2['user'];
     //                     $output .= '<a href="profile.php?id='.$one_friend_to_verify.'"><div class="d-flex text-muted pt-3">
-    //                                 <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">
+    //                                 <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$img.'">
     //                                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
     //                                     <div class="d-flex justify-content-between">
     //                                         <strong class="text-gray-dark">'.$fname.' '.$lname.'</strong>
@@ -63,7 +63,7 @@
     //         foreach($friends2 as $one_friend)
     //         {
     //             // $output .= '<a href="messages.php?chatid='.$one_chat.'&userid='.$one_friend.'"><div class="d-flex text-muted pt-3">
-    //             //             <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">
+    //             //             <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$img.'">
     //             //             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
     //             //                 <div class="d-flex justify-content-between">
     //             //                     <strong class="text-gray-dark">'.$fname.' '.$lname.'</strong>
@@ -85,7 +85,7 @@
     //                     $lname = $row2['lname'];
     //                     $user = $row2['user'];
     //                     $output .= '<a href="php/newmessage.php?id='.$one_friend.'"><div class="d-flex text-muted pt-3">
-    //                                 <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">
+    //                                 <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$img.'">
     //                                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
     //                                     <div class="d-flex justify-content-between">
     //                                         <strong class="text-gray-dark">'.$fname.' '.$lname.'</strong>
@@ -128,7 +128,7 @@
                     $lname = $row2['lname'];
                     $user = $row2['user'];
                     $output .= '<a href="profile.php?id='.$user_id.'"><div class="d-flex text-muted pt-3">
-                                <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">
+                                <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$img.'">
                                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                     <div class="d-flex justify-content-between">
                                         <strong class="text-gray-dark">'.$fname.' '.$lname.'</strong>
@@ -150,7 +150,7 @@
                     $lname = $row2['lname'];
                     $user = $row2['user'];
                     $output .= '<a href="profile.php?id='.$user_id.'"><div class="d-flex text-muted pt-3">
-                                <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">
+                                <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$img.'">
                                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                     <div class="d-flex justify-content-between">
                                         <strong class="text-gray-dark">'.$fname.' '.$lname.'</strong>
@@ -189,7 +189,7 @@
                 $lname = $row2['lname'];
                 $user = $row2['user'];
                 $output .= '<a href="profile.php?id='.$user_id.'"><div class="d-flex text-muted pt-3">
-                            <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">
+                            <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$img.'">
                             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                 <div class="d-flex justify-content-between">
                                     <strong class="text-gray-dark">'.$fname.' '.$lname.'</strong>

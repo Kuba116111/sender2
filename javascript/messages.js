@@ -50,6 +50,7 @@ setInterval(() =>{
         {
           data_old = data;
           allmessages.innerHTML = data;
+          scrollToBottom();
         }
         // dateTime.innerHTML = DateAndTime();
           // allchats.innerHTML = "ok";
@@ -64,5 +65,5 @@ setInterval(() =>{
 function scrollToBottom(){
   setTimeout(() => {
     allmessages.scrollTop = allmessages.scrollHeight;
-  }, 150);
+  }, 0);
 }

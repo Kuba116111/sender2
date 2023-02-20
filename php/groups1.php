@@ -81,7 +81,7 @@
                                     }
                         
                                     $output .= '<a href="groups.php?groupid='.$group_id.'"><div class="d-flex text-muted pt-3">
-                                                    <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">
+                                                    <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$img.'">
                                                     <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                                         <div class="d-flex justify-content-between">
                                                             <strong class="text-gray-dark">'.$group_name.'</strong>

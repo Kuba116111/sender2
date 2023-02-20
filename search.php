@@ -42,7 +42,7 @@
             while($row = mysqli_fetch_assoc($query))
             {
                 $result .= '<a href="profile.php?id='.$row['id'].'" class="allchats"><div class="d-flex text-muted pt-3 pb-3">';
-                    $result .= '<img class="bd-placeholder-img rounded-circle m-3 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$row['img'].'">';
+                    $result .= '<img class="bd-placeholder-img rounded-circle m-3 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$row['img'].'">';
                     $result .= '<div class="pb-3 mb-0 small lh-sm border-bottom w-100">';
                         $result .= '<div class="d-flex justify-content-between">';
                         $result .= '<strong class="text-gray-dark">@'.$row['user'].'</strong>';
@@ -70,7 +70,7 @@
 
 
                 $result .= '<a href="profile.php?id='.$row['id'].'" class="allchats"><div class="d-flex text-muted pt-3 border-bottom">';
-                    $result .= '<img class="bd-placeholder-img rounded-circle m-3 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$row['img'].'">';
+                    $result .= '<img class="bd-placeholder-img rounded-circle m-3 photo-profile" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$row['img'].'">';
                     $result .= '<div class="pb-3 mb-0 w-100">';
                         $result .= '<div class="d-flex justify-content-between">';
                         $result .= '<strong class="text-gray-dark">@'.$row['user'].'</strong>';
@@ -147,7 +147,7 @@
     </nav>
     <main class="container">
         <!-- <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
-            <img class="me-3 rounded-circle photo-profile" src="images/<?php echo $img ?>" alt="" width="48" height="48">
+            <img class="me-3 rounded-circle photo-profile" src="images/users/<?php echo $img ?>" alt="" width="48" height="48">
             <div class="lh-1">
                 <h1 class="h6 mb-0 text-white lh-1"><?php
                     echo $login."<br>";

@@ -85,7 +85,7 @@
                                 if(in_array($img_type, $types) === true){
                                     $ran_id = rand(time(), 100000000);
                                     $new_img_name = $ran_id.$img_name;
-                                    if(move_uploaded_file($tmp_name,"../images/".$new_img_name)){
+                                    if(move_uploaded_file($tmp_name,"../images/users/".$new_img_name)){
                                         if(isset($_POST['accept'])){
                                             $status = "Aktywny(a) teraz";
                                             $encrypt_pass = password_hash($password, PASSWORD_DEFAULT);

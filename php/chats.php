@@ -70,7 +70,7 @@
                             }
                 
                             $output .= '<a href="messages.php?chatid='.$chat_id.'&userid='.$user_id.'"><div class="d-flex text-muted pt-3">
-                                            <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">
+                                            <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$img.'">
                                             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                                 <div class="d-flex justify-content-between">
                                                     <strong class="text-gray-dark">'.$fname.' '.$lname.'</strong>
@@ -115,7 +115,7 @@
         //         }
     
         //         $output .= '<a href="messages.php?id='.$row['id'].'"><div class="d-flex text-muted pt-3">
-        //                         <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$row['img'].'">
+        //                         <img class="bd-placeholder-img rounded-circle me-2 rounded photo-profile" width="80" height="80" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$row['img'].'">
         //                         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
         //                             <div class="d-flex justify-content-between">
         //                                 <strong class="text-gray-dark">'.$row['fname'].' '.$row['lname'].'</strong>

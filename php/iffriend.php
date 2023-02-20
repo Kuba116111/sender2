@@ -48,7 +48,7 @@
                 {
                     // echo 1;
                     $my_profile = '<div class="col-lg-20 col-md-20 mx-auto">';
-                    $my_profile .= '<img class="bd-placeholder-img rounded-circle photo-profile" width="140" height="140" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">';
+                    $my_profile .= '<img class="bd-placeholder-img rounded-circle photo-profile" width="140" height="140" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$img.'">';
                     $my_profile .= '<h2 class="fw-normal">'.$login."<br>".$fname." ".$lname."</h2>";
                     $my_profile .= "<p>Data dołączenia: $date</p>";
                     $my_profile .= '<p><form action="php/delfriend.php" id="form-friend-id"><input type="text" name="friend-id" value="'.$id_user.'"><button type="submit" class="btn btn-secondary w-100" id="btn-del-friend">Usuń z grona znajomych znajomych &raquo;</button></form></p>';
@@ -73,7 +73,7 @@
     // header("Location: ../messages.php?chatid=$rand&userid=$user_id");
     
     $my_profile = '<div class="col-lg-20 col-md-20 mx-auto">';
-    $my_profile .= '<img class="bd-placeholder-img rounded-circle photo-profile" width="140" height="140" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/'.$img.'">';
+    $my_profile .= '<img class="bd-placeholder-img rounded-circle photo-profile" width="140" height="140" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="images/users/'.$img.'">';
     $my_profile .= '<h2 class="fw-normal">'.$login."<br>".$fname." ".$lname."</h2>";
     $my_profile .= "<p>Data dołączenia: $date</p>";
     $my_profile .= '<p><button class="btn btn-secondary w-100" id="btn-add-friend" value="'.$id_user.'">Dodaj do znajomych &raquo;</button></p>';
